@@ -1,0 +1,90 @@
+1. Security Policy for ShareAll Corp. Inc. 
+
+1.0 Purpose
+
+The purpose of this policy is to inform our users about the nature and limits of ShareAll Corp. Inc.'s services we will be providing.  It will not only help users take advantage of our website but also inform them as to the safety and use of their data.
+
+The information covered in this policy includes, but is not limited to, information that is ethier stored or shared using our website, as well as data provided by the user, both implicitly and explicitly.
+
+2.0 Scope
+
+ShareAll Corp. Inc. has created a website that allows users to share files between each other.  This activity will be known as "the service".
+
+This policy will concern any files that are transfered between users using the service.  It also concerns any data that the user provides to ShareAll Corp. Inc., including but not limited to their name, location, ip address, shard file contents, and which other users a given user has shared with.
+
+This policy also concerns the abilities that users have at various subscription levels.
+
+3.0 Policy
+
+3.1 Subscrpition Model
+
+Users will be split into two groups, free users and paying users.  Users who do not pay a monthly fee are considered free users, while users who pay a monthly fee set by ShareAll Corp. Inc. will be considered paying users.
+
+A month is defined to be a calendar month, starting at 0:00 EST on the first day of each month and ending at 11:59 EST on the last day of each month.
+
+Any capabilities given to free users are available to paying users, unless otherwise specified.
+
+In order to share a file, a user must specify the other user(s) with which they wish to share each file.  A sharing offer will then be sent to that(those) user(s).  Recieving users may either accept or reject that offer.
+
+3.1.1 Free Users
+
+Free users will be allowed to send or recieve any number of files of any size each month, not exceeding a download limit of 2 GB and upload limit of .5 GB per month.  A file's size is counted against that user's upload limit if they share it with one or more other users - it is not counted multiple times if the user shares it with more than one of their peers.  A file is counted against a users download limit if they accept a share offer from annother user, regardless of how many users the sending user offered the file to.  If sharing or recieving a file exceeds either of the limits, the transaction will not be allowed to occur.
+A file is considered to be uploaded or downloaded in a given month if the up/down load was started within that month - if a file finishes uploading or downloading in the next month, it is counted against the first month's  limits and no the second month's.
+
+Free users will also have ad that appear before any share or recieve.
+
+3.1.2 Paying Users
+
+A user who pays has an unlimited upload and download limit for the month for which they pay.  
+
+Paying users will have no ads appear on the site.
+
+3.2 Data Stored by ShareAll Corp. Inc.
+
+Any information stored by ShareAll Corp. Inc. will be saved for at most 1 (one) year.  Any data will be stored for research purposes only, including but not limited to exploring the sharing practices of users.  This data may also be used to help target ads, though the data about users will not be shared with any company other than ShareAll Corp. Inc.  This data will only be shown internally to employees directly involved with researching the practices of users.
+
+Users will not be able to remove any data that is stored before the 1 (one) year period ends.
+
+Any user may at any time request a record of all stored data regarding them.  ShareAll Corp. Inc. will provide that data with sixty (60) days of the initial request.
+
+3.2.1 Information about files shared
+
+ShareAll Corp. Inc. reserves the right to save any information about any files transfered between users.  This includes, but is not limited to, which users were involved in the transfer, how large the file was, and file name of the file.  ShareAll Corp. Inc. will not store the contents of any file transfered using our site.
+
+3.2.2 Inforation about users
+
+ShareAll Corp. Inc. reserves the right to save any information explicitly provided by the user.  This includes but is not limited to name, city of residence, phone number, and email address.
+
+ShareAll Corp. Inc. also reserves the right to save some information implitily provided by the user.  This includes (and is limited to) IP address of users, sharing habits (how big are the files shared, which other users are they sharing or recieving with, etc.), and how users interact with our site (which pages they spend time on, what they click on to reach various pages, etc).
+
+
+
+
+
+
+
+2.
+- 14 account have passwords
+- I used john only
+- I found and tried as many wordlists that I could find.  This included the password.lst with john the ripper, an aggrigate free list provied by OpenWall, and all password lists provided in the megasploit framework. I did not attempt brute forcing, as I did not expect that I would have enough time to likely yeild results.
+- I was running my computer almost 24 hours a day for about 5 days. So on the order of 120 hours.  2 of those days john was running on the virtual machine, the remaining 3 days were running on the host.  All days were running using all 4 cores of me 2.83 GHz machine.
+- Finding batman's, humanhorn's and cmccabe's passwords were easiest (I think - I neglected to record which ones were cracked first).  
+- According to /etc/sudoers, only members of the sudo and admin groups have sudo privledges.  According to the members command, defcon is the only member of that group.  Thus, root and defcon are the only administrators.
+
+3.
+- which perl
+- ifconfig
+- ps
+- nc [host] [port]
+- ls
+- file
+- cat
+- top
+- 1) Ping the systems you want the MAC address of
+  2) call 'arp -a'
+- dig - if you have a hostname, this will allow you to find the IP address of that machine
+  Alternatively, nslookup will do a very similar task
+  Finally, if you do not have the hostname of the machine you want to reach, you can use nmap to do a ping sweep
+  nmap -sP 192.168.1.1-254
+  will do a ping sweep of all address on 192.168.1.*
+  
