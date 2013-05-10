@@ -1,0 +1,38 @@
+1. What is the disk format of the SD card?
+FAT16
+
+2. What type of phone does the suspect have? Please note carrier and operating system with version number. Please elaborate how you determined this information.
+Did a grep/keyword search for "htc" (case insensitive)
+First hit was an about file, listing model number, and various other statisics.  I've copied the relevant ones below:
+"deviceModel":"ADR6300","source":"Verizon","firmwareVersion":"2.3.4"
+ADR6300 corresponds to the HTC Droid Incredible
+My understanding is that "firmware version" should be the android version, so we're dealing with android 2.3.4
+The file was amazonmp3/AMPmetrics_v2.txt
+
+3. What other apps are installed on the phone? Please elaborate how you determined this information.
+Based on folders in root direcotry
+- espn score center
+- amazon mp3
+
+Based on folders in Android/data
+- Dropbox
+- google voice
+- google maps
+- youtube
+- zynga words with friends
+
+
+4. List some of the incriminating evidence that you found. Please elaborate where and how you uncovered the evidence.
+- Based on the pictures in DCIM/Camera (where the camera saves images by default), he's stalking David Copperfield
+- More photos in the truecrypt drive
+
+
+5. Did the suspect move or try to delete any files before his arrest? Please list the name(s) of the file(s) and any indications of their contents that you can find.
+tmp/his_upcoming_performances.txt => A list of David Copperfield's upcoming performances
+
+
+6. Are there any encrypted files? If so, please attach the contents and a brief description of how you obtained the contents.
+There was a truecrypt file. I used TCBrute to gain access (password is 'baseball'), and found more photos of David Copperfield
+
+7. Who is the celebrity that the suspect has been stalking?
+David Copperfield - see the answer 4
