@@ -1,0 +1,30 @@
+dc18_wos_00001_20100730183633
+1. 2dcfc66ef9a8cc34674cc119569c0b7a
+2. 137756 packets
+3. There seem to be 0 plaintext username-password pairs, according to dsniff.
+ettercap appears to back up this conclusion.
+4. N/A
+5 There are 1249 packets with the TCP FIN flag set.
+6. Use the wireshark filter 'dns.resp.addr' to get all packets that have a responce address.  These packets will allow you to map ip addresses to hostames. I couldn't find a great way to dispay the mapping though.
+7. See the attached file dc18_wos_00001_20100730183633_protocol_summary.txt
+I created this file by calling 
+  tshark -r ./dc18_wos_00001_20100730183633 -q -z io,phs > ./dc18_wos_00001_20100730183633_protocol_summary.txt 
+8. I would probably start by looking for HTTP requests - they specify the file tye of their payload.  Using that, I should be able to make a set of packets that all contain the same file, and from there it's trival to strip away the headers and footers, concatinate the payloads and reconstruct the file.
+You're going to need to be careful that the packets are in the correct order, and to find if there are any missing packets.
+9. According to wiresharks Exepert Analysis window, there are 7 malformed packets.  One was a malformed handshake of the SAMETIME protocol, and any malformed handshake is supsicious.  There were 3 malformed packets of the GPRS Tunneling protocol - all seemed to be empty with no flags set, which is weird.  There were also 3 malformed GIF images being transfered over HTTP - looking at the raw bytes, they seem not have the correct HTTP headers in them.
+
+
+dc18_wos_00019_20100730191422
+1. a38128ec1bdbc4eac828566c9ef9b3ed
+2. 136559 packets
+3. dsniff found one password in packets 32830 and 47093 (same user & pass, 2 connections).  Ettercap found the same 2 packets, same username and pass.
+4. I take a look at the traffic in responce to the password being sent.  If it is affermative responses, the password was valid.  I do not think there is any way to test if the password is still valid today.
+5. 1353 packets have the TCP FIN flag set.
+6. See answer above.
+7. See the attached file dc18_wos_00019_20100730191422_protocol_summary.txt
+8. See above answer.
+9. There were 13 suspicious packets.
+   Most interesting was the 1 packet with an incorrect ICMP Checksum.  It apperaed to be a UDP packet with length 0, whereas the ICMP checksum implied it was supposed to have data. This may have implied that someone was removing content from this packet.
+   There was also 1 HTTP malformed packet - nothing clearly wrong, other than garbling.
+   Finally, 11 malformed GIF images - all were missing their HTTP headers.
+
