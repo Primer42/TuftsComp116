@@ -1,0 +1,5 @@
+William Richard
+wrichard@tufts.edu
+Ming Chow (Assuming you're OK with being my mentor for this)
+
+The Android OS has a unique system by which it limits the abilities of applications.  Rather than denying or allowing access to resources via the Linux file permission system, it creates it's own permission system which is more transparent to the user.  An application is able to request usage of a certain feature or ability, and this request is presented to the user when the application is installed.  Sadly, like every other permission system, it is not foolproof; there are several documented vulnerabilities to this system.  This paper will not only explore the workings of the Android permission system, but also some of it's weaknesses.

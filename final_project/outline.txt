@@ -1,0 +1,39 @@
+* Permissions Overview
+Talk about what permissions are, and how they work here
+Cover:
+** How, when and where permissions are granted
+** Examples of permissions
+** How the user interacts with permissions
+* Permission Vulnerabilities
+** No-permission applications - what can they do that they shouldn't be able to? (that we know of)
+SD card
+What other apps are installed
+Basic phone information, that should not be accessable
+remote shell
+root
+Need to explore this topic more - I'm sure there are other papers on it that I haven't found yet
+** Mis-used permissions
+overpriviledged applications
+		apps that ask for permissions they don't use. Why is this bad?
+multiple applications
+	 It' possible to get more permissions than you should by getting the user to install a suite of apps, each getting a subset of the permissions you want. In combination, it means you're granting more abilities than you think you are.
+** The user
+If the users do not understand what the permissions entail, or are too lazy to read the permissions, the system does't work
+Cover at least 1 high profile case where an well known app asked for permissions that it was doing 'bad' things with. User willingly agreed to it, and should have known that it was not legit.
+
+* Project
+Mobile version of Stowaway
+       Stowaway is an online scanner developed at UC Berkley.  You upload an apk, and it looks both at the calls it makes and the permissions it asks for to see if it's overprivlidged
+       I can't see why this couldn't be an app on a phone, rather than a website
+       	 May need to have root to access the apk files, but all the same, it could work
+       If it doesn't work, explain the problems that I ran in to.
+       If there is time, try to see if there's a way to detect applications that are working together by looking for intents
+       	  A simplier way to do this would be to bring up a red flag if there are several apps from the same developer/package that have many non-overlapping privledges
+	
+
+*Sources
+I have actually found all of these papers, but they are at work, and I'm at home. I'll hand-write the actual citiations either below or on the other side of this sheet
+- UC Berkeley Paper on Stowaway and Overpriviledge
+- Several papers presenting proof of concept no-permission apps
+- At least 1 paper discussing how one has 2 apps work together to get more permissions than either app asked for
+- Android documentation

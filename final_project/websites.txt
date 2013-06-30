@@ -1,0 +1,6 @@
+http://source.android.com/tech/security/index.html
+https://developer.android.com/guide/topics/security/security.html
+https://viaforensics.com/security/nopermission-android-app-remote-shell.html
+http://leviathansecurity.com/blog/archives/17-Zero-Permission-Android-Applications.html
+http://www.bgr.com/2012/04/11/major-android-vulnerability-gives-apps-access-to-sensitive-data-without-permission/
+
